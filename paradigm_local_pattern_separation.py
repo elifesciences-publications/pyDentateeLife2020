@@ -36,6 +36,16 @@ pr.add_argument('-seed',
                 help='standard deviation of gaussian distribution',
                 default=10000,
                 dest='seed')
+pr.add_argument('-pp_weight',
+                type=float,
+                help='standard deviation of gaussian distribution',
+                default=1e-3,
+                dest='pp_weight')
+pr.add_argument('-poiss_rate',
+                type=float,
+                help='standard deviation of gaussian distribution',
+                default=10,
+                dest='poiss_rate')
 
 args = pr.parse_args()
 runs = range(args.runs[0], args.runs[1], args.runs[2])
@@ -53,7 +63,10 @@ dll_files = [("C:\\Users\\DanielM\\Repos\\models_dentate\\"
               "dentategyrusnet2005\\nrnmech.dll"),
              ("C:\\Users\\Daniel\\repos\\"
               "dentate_gyrus_Santhakumar2005_and_Yim_patterns\\"
-              "dentategyrusnet2005\\nrnmech.dll")]
+              "dentategyrusnet2005\\nrnmech.dll"),
+              ("/home/daniel/repos/pyDentate/mechs_7-6_linux/"
+               "x86_64/.libs/libnrnmech.so")]
+
 for x in dll_files:
     if os.path.isfile(x):
         dll_dir = x
@@ -94,13 +107,14 @@ PP_to_BCs = np.array(PP_to_BCs)
 
 # Generate temporal patterns for the 100 PP inputs
 np.random.seed(seed)
-temporal_patterns = inhom_poiss(rate=10)
+temporal_patterns = inhom_poiss(rate=args.poiss_rate)
 
 # Start the runs of the model
 for run in runs:
     nw = net_tunedrev.TunedNetwork(seed, temporal_patterns[0+run:24+run],
                                    PP_to_GCs[0+run:24+run],
-                                   PP_to_BCs[0+run:24+run])
+                                   PP_to_BCs[0+run:24+run],
+                                   pp_weight=args.pp_weight)
 
     # Attach voltage recordings to all cells
     nw.populations[0].voltage_recording(range(2000))

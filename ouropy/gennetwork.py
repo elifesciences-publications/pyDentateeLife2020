@@ -232,7 +232,8 @@ class tmgsynConnection(GenConnection):
 
     def __init__(self, pre_pop, post_pop,
                  target_pool, target_segs, divergence,
-                 tau_1, tau_facil, U, tau_rec, e, thr, delay, weight):
+                 tau_1, tau_facil, U, tau_rec, e, thr, delay, weight,
+                 rec_cond=False):
         """Create a connection with tmgsyn as published by Tsodyks, Pawelzik &
         Markram, 1998.
         The tmgsyn is a dynamic three state implicit resource synapse model.
@@ -344,7 +345,8 @@ class tmgsynConnection(GenConnection):
                     curr_netcons.append(curr_netcon)
                     netcons.append(curr_netcons)
                     synapses.append(curr_syns)
-            conductances.append(curr_conductances)
+            if rec_cond:
+                conductances.append(curr_conductances)
         self.conductances = conductances
         self.netcons = netcons
         self.pre_cell_targets = np.array(pre_cell_target)
@@ -746,7 +748,7 @@ class PerforantPathPoissonTmgsyn(GenConnection):
     uses vecevent.mod -> h.VecStim
     """
     def __init__(self, post_pop, t_pattern, spat_pattern, target_segs,
-                 tau_1, tau_facil, U, tau_rec, e, weight):
+                 tau_1, tau_facil, U, tau_rec, e, weight, rec_cond=False):
 
         self.init_parameters = locals()
         post_pop.add_connection(self)
@@ -778,7 +780,8 @@ class PerforantPathPoissonTmgsyn(GenConnection):
                 curr_netcon.weight[0] = weight
                 netcons.append(curr_netcon)
                 synapses.append(curr_syn)
-            conductances.append(curr_conductances)
+            if rec_cond:
+                conductances.append(curr_conductances)
 
         self.conductances = conductances
         self.netcons = netcons

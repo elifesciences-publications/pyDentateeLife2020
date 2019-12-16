@@ -18,7 +18,8 @@ class TunedNetwork(gennetwork.GenNetwork):
 
     def __init__(self, seed=None, temporal_patterns=np.array([]),
                  spatial_patterns_gcs=np.array([]),
-                 spatial_patterns_bcs=np.array([])):
+                 spatial_patterns_bcs=np.array([]),
+                 pp_weight=1e-3):
         self.init_params = locals()
         self.init_params['self'] = str(self.init_params['self'])
         # Setup cells
@@ -46,7 +47,7 @@ class TunedNetwork(gennetwork.GenNetwork):
                                                       temporal_patterns[pa],
                                                       spatial_patterns_gcs[pa],
                                                       'midd', 10, 0, 1, 0, 0,
-                                                      1*10**(-3))
+                                                      pp_weight)
 
         if (type(spatial_patterns_bcs) == np.ndarray and
            type(temporal_patterns) == np.ndarray):
@@ -56,7 +57,7 @@ class TunedNetwork(gennetwork.GenNetwork):
                                                       temporal_patterns[pa],
                                                       spatial_patterns_bcs[pa],
                                                       'ddend', 6.3, 0, 1, 0, 0,
-                                                      1*10**(-3))
+                                                      pp_weight)
 
         # GC -> MC
         gennetwork.tmgsynConnection(self.populations[0], self.populations[1],
