@@ -183,7 +183,7 @@ def similarity_measure_leutgeb(signal1,signal2, len_bin):
 
     for x in range(signal1.shape[1]):
         corr_vector.append(pearsonr(signal1[:,x], signal2[:,x])[0])
-    pdb.set_trace()
+
     return np.array(corr_vector)
 
 def sqrt_diff(signal1, signal2, len_bin):

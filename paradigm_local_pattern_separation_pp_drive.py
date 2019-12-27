@@ -7,7 +7,7 @@ Created on Mon Mar 05 13:41:23 2018
 
 from neuron import h, gui  # gui necessary for some parameters to h namespace
 import numpy as np
-import net_disinhibitedrev
+import net_tunedrev
 from burst_generator_inhomogeneous_poisson import inhom_poiss
 import os
 import argparse
@@ -76,7 +76,7 @@ for x in dll_files:
 print("DLL loaded from: " + dll_dir)
 h.nrn_load_dll(dll_dir)
 
-for seed in args.seeds:
+for seed in range(args.seeds[0], args.seeds[1], args.seeds[2]):
     # Seed the numpy random number generator for replication
     np.random.seed(seed)
     
@@ -89,7 +89,7 @@ for seed in args.seeds:
     pdf_bc = pdf_bc/pdf_bc.sum()
     GC_indices = np.arange(2000)
     start_idc = np.random.randint(0, 1999, size=400)
-    
+
     PP_to_GCs = []
     for x in start_idc:
         curr_idc = np.concatenate((GC_indices[x:2000], GC_indices[0:x]))
@@ -116,7 +116,7 @@ for seed in args.seeds:
 # Start the runs of the model
     for run in runs:
         print(f"Start Running {run}")
-        nw = net_disinhibitedrev.TunedNetwork(seed, temporal_patterns[0+run:24+run],
+        nw = net_tunedrev.TunedNetwork(seed, temporal_patterns[0+run:24+run],
                                        PP_to_GCs[0+run:24+run],
                                        PP_to_BCs[0+run:24+run],
                                        pp_weight=args.pp_weight)
@@ -137,23 +137,23 @@ for seed in args.seeds:
         h.dt = 10
         while h.t < -100:
             h.fadvance()
-    
+
         h.secondorder = 2
         h.t = 0
         h.dt = 0.1
-    
+
         """Setup run control for -100 to 1500"""
         h.frecord_init()  # Necessary after changing t to restart the vectors
         while h.t < 600:
             h.fadvance()
         print("Done Running {run}")
-    
+
         save_data_name = (f"{str(nw)}_"
                           f"{seed}_"
                           f"{run:03d}_"
                           f"{args.poiss_rate:04f}_"
                           f"{args.pp_weight:03f}")
-    
+
         if run == 0:
             fig = nw.plot_aps(time=600)
             tuned_fig_file_name =save_data_name

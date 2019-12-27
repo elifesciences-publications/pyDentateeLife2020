@@ -1,1 +1,1 @@
-python paradigm_local_pattern_separation_pp_drive.py -runs 0 25 1 -savedir "/home/daniel/repos/revision_pp_drive_data/" -scale 1000 -seeds 100 107 1 -pp_weight 2e-3 -poiss_rate 30
+python paradigm_local_pattern_separation_pp_drive.py -runs 0 25 1 -savedir "/home/daniel/repos/revision_pp_drive_data/" -scale 1000 -seeds 100 107 1 -pp_weight 2.0e-3 -poiss_rate 30
