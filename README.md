@@ -7,10 +7,13 @@ This is a legacy repository dedicated to the reproducibility of our findings fro
 Follow these steps to run this legacy version of pyDentate:
 <ol>
 <li>Install <a href="https://www.anaconda.com/distribution">Anaconda</a></li>
-<li>Install <a href="https://www.neuron.yale.edu/neuron">NEURON</a></li>
+<li>Install <a href="https://www.neuron.yale.edu/neuron">NEURON</a>
   <p>There are many ways to install NEURON. I prefer the <a href="https://anaconda.org/conda-forge/neuron">conda-forge</a> distribution<blockquote>
         <p>conda install -c conda-forge/label/cf201901 neuron</p>
     </blockquote></p>
+</li>
+<li>Install elephant
+  <blockquote>pip install elephant</blockquote></li>
 <li><a href="https://www.neuron.yale.edu/neuron/download/compile_mswin">Compile the NEURON mechanisms</a> in /mechs_7-6</li>
 <li>Download the pyDentateeLife2020 repository and unpack</li>
 <li>Open paradigm_pattern_separation.py and add the path to your compiled mechanisms to dll_files variable</li>
