@@ -6,12 +6,12 @@ This is a legacy repository dedicated to the reproducibility of our findings fro
 
 Follow these steps to run this legacy version of pyDentate:
 <ol>
-<li>Install [https://www.anaconda.com/distribution/](Anaconda)</li>
-<li>Install [https://www.neuron.yale.edu/neuron/](NEURON)</li>
-  <p>There are many ways to install NEURON. I prefer the [https://anaconda.org/conda-forge/neuron](conda-forge) distribution<blockquote>
+<li>Install [Anaconda](https://www.anaconda.com/distribution/)</li>
+<li>Install [NEURON](https://www.neuron.yale.edu/neuron/)</li>
+  <p>There are many ways to install NEURON. I prefer the [conda-forge](https://anaconda.org/conda-forge/neuron) distribution<blockquote>
         <p>conda install -c conda-forge/label/cf201901 neuron</p>
     </blockquote></p>
-<li>[https://www.neuron.yale.edu/neuron/download/compile_mswin](Compile the NEURON mechanisms) in /mechs_7-6</li>
+<li>[Compile the NEURON mechanisms](https://www.neuron.yale.edu/neuron/download/compile_mswin) in /mechs_7-6</li>
 <li>Download the pyDentateeLife2020 repository and unpack</li>
 <li>Open paradigm_pattern_separation.py and add the path to your compiled mechanisms to dll_files variable</li>
 <li>Run paradigm_pattern_separation.py</li>
