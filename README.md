@@ -19,7 +19,7 @@ Follow these steps to run this legacy version of pyDentate:
 <li>Open paradigm_pattern_separation.py and add the path to your compiled mechanisms to dll_files variable</li>
 <li>Run paradigm_pattern_separation.py</li>
 </ol>
-If you encounter problems with running pyDentate or have questions feel free to contact me.
+If you encounter problems with running pyDentate or have questions feel free to contact me (muellerkomorowska@gmail.com or https://twitter.com/scidanm).
 
 # pyDentate structure
 
