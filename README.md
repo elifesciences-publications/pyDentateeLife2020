@@ -23,7 +23,7 @@ If you encounter problems with running pyDentate or have questions feel free to 
 
 # pyDentate structure
 
-paradigm_ files are scripts that create one or more networks, run them and save the results. net_ files contain the network classes that are used by scripts to create the networks. Other files define for example the input pattern generator (burst_generator_inhomogeneous_poisson.py) or the single cells specifications (granulecell.py with granuelcellparams.txt). ouropy provides a backend for the networks by defining the logic to create and connect networks. I custom made ouropy to move away from NEURONS Section logic to a higher-level logic of cells, populations, connections and finally netowrks. Networks in net_ files inherit from ouropys GenNetwork class. For more details on pyDentate make sure to look at the [active pyDentate repository](https://github.com/danielmk/pyDentate).
+paradigm_ files are scripts that create one or more networks, run them and save the results. net_ files contain the network classes that are used by scripts to create the networks. Other files define for example the input pattern generator (burst_generator_inhomogeneous_poisson.py) or the single cells specifications (granulecell.py with granuelcellparams.txt). ouropy provides a backend for the networks by defining the logic to create and connect networks. I custom made ouropy to move away from NEURONS Section logic to a higher-level logic of cells, populations, connections and finally networks. Networks in net_ files inherit from ouropys GenNetwork class. For more details on pyDentate make sure to look at the [active pyDentate repository](https://github.com/danielmk/pyDentate).
 
 # Author
 
