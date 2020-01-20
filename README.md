@@ -6,8 +6,8 @@ This is a legacy repository dedicated to the reproducibility of our findings fro
 
 Follow these steps to run this legacy version of pyDentate:
 <ol>
-<li>Install [Anaconda](https://www.anaconda.com/distribution/)</li>
-<li>Install [NEURON](https://www.neuron.yale.edu/neuron/)</li>
+<li>Install [Anaconda](https://www.anaconda.com/distribution)</li>
+<li>Install [NEURON](https://www.neuron.yale.edu/neuron)</li>
   <p>There are many ways to install NEURON. I prefer the [conda-forge](https://anaconda.org/conda-forge/neuron) distribution<blockquote>
         <p>conda install -c conda-forge/label/cf201901 neuron</p>
     </blockquote></p>
